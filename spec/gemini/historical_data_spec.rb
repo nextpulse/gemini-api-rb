@@ -45,4 +45,20 @@ describe Gemini::Client do
 
     it {expect(@response[0]["price"]).to eq("246.94")}
   end
+
+  context ".transfers" do
+    let(:response) 
+    {
+      [{
+        "type":"Deposit",
+      }]
+    }
+
+    before do
+      stub_http('/transfers', response.to_json, method: :post)
+      @response = client.transfers
+    end
+
+    it { expect(@response[0]['type']).to eq('Deposit') }
+  end
 end
