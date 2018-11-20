@@ -25,12 +25,12 @@ module Gemini
         if config.api_version == 1
           req.headers['X-GEMINI-PAYLOAD'] = payload
           req.headers['X-GEMINI-SIGNATURE'] = sign(payload)
-          req.headers['X-GEMINI-APIKEY'] = config.api_key
+          req.headers['X-GEMINI-APIKEY'] = @api_key
         else
           # TODO: Verify if this applies to Gemini.
           req.headers['gemini-nonce'] = nonce
           req.headers['gemini-signature'] = sign(payload)
-          req.headers['gemini-apikey'] = config.api_key
+          req.headers['gemini-apikey'] = @api_key
         end
       end
     end
@@ -48,11 +48,11 @@ module Gemini
     end
 
     def sign(payload)
-      OpenSSL::HMAC.hexdigest('sha384', config.secret, payload)
+      OpenSSL::HMAC.hexdigest('sha384', @secret, payload)
     end
 
     def valid_key?
-      !! (config.api_key && config.secret)
+      !! (@api_key && @secret)
     end
   end
 end

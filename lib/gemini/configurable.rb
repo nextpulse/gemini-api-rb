@@ -20,8 +20,10 @@ module Gemini
   end
 
   class Configuration
-    attr_accessor :api_endpoint, :debug, :debug_connection, :secret
-    attr_accessor :api_key, :websocket_api_endpoint, :rest_timeout
+    #attr_accessor :api_endpoint, :debug, :debug_connection, :secret
+    #attr_accessor :api_key, :websocket_api_endpoint, :rest_timeout
+    attr_accessor :api_endpoint, :debug, :debug_connection 
+    attr_accessor :websocket_api_endpoint, :rest_timeout
     attr_accessor :reconnect, :reconnect_after, :rest_open_timeout
     attr_accessor :api_version
 

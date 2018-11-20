@@ -30,7 +30,7 @@ module Gemini
           payload = 'AUTH' + nonce
           signature = sign(payload)
           ws_safe_send({
-            apiKey: config.api_key,
+            apiKey: @api_key,
             authSig: sign(payload),
             authPayload: payload,
             subId: sub_id.to_s,
@@ -40,7 +40,7 @@ module Gemini
           payload = 'AUTH' + nonce + nonce
           signature = sign(payload)
           ws_safe_send({
-            apiKey: config.api_key,
+            apiKey: @api_key,
             authSig: sign(payload),
             authPayload: payload,
             authNonce: nonce,

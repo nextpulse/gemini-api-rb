@@ -6,7 +6,7 @@ module Gemini
     include Gemini::Configurable
 
 
-    def initialize
+    def initialize(api_key, secret)
       if config.api_version == 1
         extend Gemini::V1::TickerClient
         extend Gemini::V1::TradesClient
@@ -31,6 +31,9 @@ module Gemini
         extend Gemini::V2::MarginClient
       end
 
+      @api_key = api_key
+      @secret = secret
+      
       @mutex = Mutex.new
       @c_counter = 1
     end

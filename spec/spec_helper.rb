@@ -8,8 +8,8 @@ RSpec.configure do |config|
   config.before(:each) do
     Gemini::Client.configure do |client_conf|
       client_conf.api_endpoint = "http://apitest"
-      client_conf.api_key = "test_key"
-      client_conf.secret  = "secret"
+      #client_conf.api_key = "test_key"
+      #client_conf.secret  = "secret"
     end
   end
 end

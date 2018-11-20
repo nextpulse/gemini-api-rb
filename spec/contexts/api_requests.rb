@@ -1,6 +1,6 @@
 RSpec.shared_context "api requests" do
   let(:headers) { { 'Content-Type' => 'application/json' } }
-  let(:client) { Gemini::Client.new }
+  let(:client) { Gemini::Client.new(api_key, secret) }
 
   def stub_http(path, body, method: :get, status: 200)
     stub_request(method, "http://apitest"+path).
