@@ -27,6 +27,8 @@ module Gemini
         raise NotFoundError, env.body['message']
       when 500
         raise InternalServerError, env.body['message']
+      when 503
+        raise ServerError, env.body['message'] 
       else
         super
       end
